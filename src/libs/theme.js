@@ -24,7 +24,7 @@ export function useTheme(loader) {
   const { themeName } = useContext(themeContext)
 
   useEffect(() => {
-    loader(themeName).then(update)
+    loader(themeName).then(module => update(module.default))
   }, [themeName])
 
   return state
