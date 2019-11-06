@@ -1,25 +1,19 @@
-import Intro from "../components/Intro";
-import Hero from "../components/Hero";
-import Header from "../components/Header";
-import Guests from "../components/Guests";
-import Map from "../components/Map";
-import Meta from "../components/Meta";
-import LastYearVideo from "../components/LastYearVideo";
-import WhatIsIt from "../components/WhatIsIt";
-import Reglament from '../components/Reglament';
-import {skaters, bmxers} from '../data';
+import { useContext } from 'react'
+
+import { ThemeProvider, themeContext, useTheme } from '../src/libs'
+import { Button } from '../src/blocks'
+
+function App() {
+  const { toggleTheme } = useContext(themeContext)
+
+  return <Button onClick={toggleTheme}>
+    Toggle theme
+    </Button >
+}
+
 
 export default () => (
-  <main>
-    <Meta />
-    <Header />
-    <Intro />
-    <Hero />
-    <LastYearVideo />
-    <WhatIsIt />
-    <Guests guests={skaters} title="СКЕЙТ" />
-    <Guests guests={bmxers} title="BMX" />
-    <Reglament />
-    <Map />
-  </main>
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>
 );
